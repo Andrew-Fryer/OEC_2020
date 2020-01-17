@@ -12,4 +12,11 @@ fs.createReadStream('data.csv')
     console.log('CSV file successfully processed');
     console.log("I should have all of the data now");
     console.log(JSON.stringify(data));
+
+    for(const obj of data) {
+      obj.Float = parseFloat(obj.Float);
+      obj.FirstName = obj.FirstName.trim();
+      obj.LastName = obj.LastName.trim();
+    }
+    console.log(JSON.stringify(data));
   });
