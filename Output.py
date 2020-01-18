@@ -25,7 +25,7 @@ class Output:
         array[12] = max(self.sources["neighbor"], 0)
         array[13] = min(self.sources["neighbor"], 0)
         array[14] = helper.co2(self.sources)
-        last_index = re.match("([0-9]*):", input.time).lastindex
+        last_index = re.match("([0-9]*):", input.time).lastindex # regex to parse time
         price = helper.rate(helper.isSummer(input.last_week), int(input.time[:last_index])) * supplied
         array[15] = price
         cost = helper.cost(self.sources)

@@ -1,4 +1,4 @@
-import pandas as pd
+# Helper functions
 
 powerCost = {'Nuclear': 68 * 10 ** -3,  # $ per kWH
                  'Solar': 481 * 10 ** -3,
