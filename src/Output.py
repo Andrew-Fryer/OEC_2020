@@ -32,6 +32,6 @@ class Output:
         array[15] = price
         cost = helper.cost(self.sources)
         array[16] = cost
-        array[17] = (price - cost) * supplied
+        array[17] = (price - cost)
         array[18] = -1
         return array
