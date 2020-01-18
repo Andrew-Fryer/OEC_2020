@@ -21,33 +21,3 @@ class Input:
         self.neighbor_power = array[18]
         self.neighbor_price = array[19]
         self.last_week = [array[20], array[21], array[22], array[23], array[24], array[25]]
-    def to_array(self):
-        array = [0 for i in range(27)]
-        array[0] = 1
-        array[1] = self.time
-        array[2] = self.demands
-        array[3] = self.sources["solar"]
-        array[4] = self.sources["nuclear"]
-        array[5] = self.sources["wind"]
-        array[6] = self.sources["hydro"]
-        array[7] = self.sources["gas"]
-        array[8] = self.sources["biofuel"]
-        array[9] = self.sources["neighbor"]
-        array[10] = self.h0
-        array[11] = self.h1
-        array[12] = self.h2
-        array[13] = self.h3
-        array[14] = self.h4
-        array[15] = self.solar_coef
-        array[16] = self.wind_coef
-        array[17] = self.hydro_coef
-        array[18] = self.neighbor_power
-        array[19] = self.neighbor_price
-        array[20] = self.last_week[0]
-        array[21] = self.last_week[1]
-        array[22] = self.last_week[2]
-        array[23] = self.last_week[3]
-        array[24] = self.last_week[4]
-        array[25] = self.last_week[5]
-        array[26] = -1
-        return array

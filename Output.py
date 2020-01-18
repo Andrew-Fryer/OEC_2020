@@ -1,30 +1,17 @@
+import helpers as helper
+import re
+
 class Output:
-    def __init__(self, array):
-        if array is None:
-            array = [0 for i in range(19)]
-        self.time = array[1]
-        self.supplied = array[2]
+    def __init__(self, input):
         self.sources = {}
-        self.sources["solar"] = array[3]
-        self.sources["nuclear"] = array[4]
-        self.sources["wind"] = array[5]
-        self.sources["hydro"] = array[6]
-        self.sources["gas"] = array[7]
-        self.sources["biofuel"] = array[8]
-        self.sources["neighbor"] = array[9]
-        self.diff = array[10]
-        self.green = array[11]
-        self.bought = array[12]
-        self.sold = array[13]
-        self.co2 = array[14]
-        self.price = array[15]
-        self.cost = array[16]
-        self.margin = array[17] # called "Diff" on sample, but that name is used above
-    def to_array(self):
+    def to_array(self, input):
         array = [0 for i in range(19)]
         array[0] = 2
-        array[1] = self.time
-        array[2] = self.supplied
+        array[1] = input.time
+        supplied = 0
+        for source in list(self.sources.items()):
+            supplied += source[1]
+        array[2] = supplied
         array[3] = self.sources["solar"]
         array[4] = self.sources["nuclear"]
         array[5] = self.sources["wind"]
@@ -32,13 +19,17 @@ class Output:
         array[7] = self.sources["gas"]
         array[8] = self.sources["biofuel"]
         array[9] = self.sources["neighbor"]
-        array[10] = self.diff
-        array[11] = self.green
-        array[12] = self.bought
-        array[13] = self.sold
-        array[14] = self.co2
-        array[15] = self.price
-        array[16] = self.cost
-        array[17] = self.margin
+        array[10] = supplied - input.demands
+        green = sum([self.sources["solar"], self.sources["wind"], self.sources["hydro"], self.sources["biofuel"]])
+        array[11] = green
+        array[12] = max(self.sources["neighbor"], 0)
+        array[13] = min(self.sources["neighbor"], 0)
+        array[14] = helper.co2(self.sources)
+        last_index = re.match("([0-9]*):", input.time).lastindex
+        price = helper.rate(helper.isSummer(input.last_week), int(input.time[:last_index])) * supplied
+        array[15] = price
+        cost = helper.cost(self.sources)
+        array[16] = cost
+        array[17] = (price - cost) * supplied
         array[18] = -1
         return array
