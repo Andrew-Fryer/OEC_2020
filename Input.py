@@ -2,13 +2,14 @@ class Input:
     def __init__(self, array):
         self.time = array[1]
         self.demands = array[2]
-        self.solar = array[3]
-        self.nuclear = array[4]
-        self.wind = array[5]
-        self.hydro = array[6]
-        self.gas = array[7]
-        self.biofuel = array[8]
-        self.now = array[9]
+        self.sources = {}
+        self.sources["solar"] = array[3]
+        self.sources["nuclear"] = array[4]
+        self.sources["wind"] = array[5]
+        self.sources["hydro"] = array[6]
+        self.sources["gas"] = array[7]
+        self.sources["biofuel"] = array[8]
+        self.sources["neighbor"] = array[9]
         self.h0 = array[10]
         self.h1 = array[11]
         self.h2 = array[12]
@@ -25,13 +26,13 @@ class Input:
         array[0] = 1
         array[1] = self.time
         array[2] = self.demands
-        array[3] = self.solar
-        array[4] = self.nuclear
-        array[5] = self.wind
-        array[6] = self.hydro
-        array[7] = self.gas
-        array[8] = self.biofuel
-        array[9] = self.now
+        array[3] = self.sources["solar"]
+        array[4] = self.sources["nuclear"]
+        array[5] = self.sources["wind"]
+        array[6] = self.sources["hydro"]
+        array[7] = self.sources["gas"]
+        array[8] = self.sources["biofuel"]
+        array[9] = self.sources["neighbor"]
         array[10] = self.h0
         array[11] = self.h1
         array[12] = self.h2
@@ -49,3 +50,4 @@ class Input:
         array[24] = self.last_week[4]
         array[25] = self.last_week[5]
         array[26] = -1
+        return array

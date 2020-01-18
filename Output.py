@@ -4,13 +4,14 @@ class Output:
             array = [0 for i in range(19)]
         self.time = array[1]
         self.supplied = array[2]
-        self.solar = array[3]
-        self.nuclear = array[4]
-        self.wind = array[5]
-        self.hydro = array[6]
-        self.gas = array[7]
-        self.biofuel = array[8]
-        self.neighbor = array[9]
+        self.sources = {}
+        self.sources["solar"] = array[3]
+        self.sources["nuclear"] = array[4]
+        self.sources["wind"] = array[5]
+        self.sources["hydro"] = array[6]
+        self.sources["gas"] = array[7]
+        self.sources["biofuel"] = array[8]
+        self.sources["neighbor"] = array[9]
         self.diff = array[10]
         self.green = array[11]
         self.bought = array[12]
@@ -24,13 +25,13 @@ class Output:
         array[0] = 2
         array[1] = self.time
         array[2] = self.supplied
-        array[3] = self.solar
-        array[4] = self.nuclear
-        array[5] = self.wind
-        array[6] = self.hydro
-        array[7] = self.gas
-        array[8] = self.biofuel
-        array[9] = self.neighbor
+        array[3] = self.sources["solar"]
+        array[4] = self.sources["nuclear"]
+        array[5] = self.sources["wind"]
+        array[6] = self.sources["hydro"]
+        array[7] = self.sources["gas"]
+        array[8] = self.sources["biofuel"]
+        array[9] = self.sources["neighbor"]
         array[10] = self.diff
         array[11] = self.green
         array[12] = self.bought
@@ -40,3 +41,4 @@ class Output:
         array[16] = self.cost
         array[17] = self.margin
         array[18] = -1
+        return array
