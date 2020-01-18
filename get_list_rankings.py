@@ -1,5 +1,6 @@
 #Power generation list ranking generator
 
+#Constants for different 
 A = 0.75
 B = 2
 C = 2
