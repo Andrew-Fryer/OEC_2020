@@ -1,3 +1,5 @@
+# Make objects that generate store
+
 import helpers as helper
 import re
 

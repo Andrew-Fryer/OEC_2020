@@ -1,3 +1,5 @@
+# Implementation of a greedy algorithm
+
 import Output
 
 # clamp value to be between limits (-0.01 to 0.01)

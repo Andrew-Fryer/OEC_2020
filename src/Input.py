@@ -1,3 +1,5 @@
+# Make objects to hold input data rows
+
 class Input:
     def __init__(self, array):
         self.time = array[1]
