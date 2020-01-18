@@ -30,4 +30,5 @@ for my_input in inputs:
 
     prev_nuclear = output.sources["nuclear"]
 
-print(outputs)
+out = pd.DataFrame.from_records(outputs, columns=["Output", "Time", "Total", "Solar", "Nuclear", "Wind", "Hydroelect", "Gas/oil", "Biofuel", "Neighbor", "Diff.", "Green", "Bought", "Sold", "CO2 made", "Selling Price", "Cost to Make", "Diff.", "END"])
+out.to_csv('test.csv')
